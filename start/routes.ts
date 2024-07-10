@@ -5,5 +5,4 @@ import router from '@adonisjs/core/services/router'
 router.get('/', [URLController, 'RedirectURL'])
 router.get('/:id', [URLController, 'ShowURL'])
 
-router.get('/cod', [CodeController,'show']).as('code.show')
-router.post('/code', [CodeController,'store']).as('code.store')
+router.post('/code/send', [CodeController, 'store']).as('code.store')

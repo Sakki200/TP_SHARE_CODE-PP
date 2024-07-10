@@ -6,29 +6,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AdonisJS - Code Input</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
 
   @vite(['resources/css/index.css', 'resources/js/LocalToBDD.js'])
 
 </head>
 
 <body>
-  <section>
-    <h1>Share-Code</h1>
-    <form method="post" action="{{route("code.store")}}">
-      {{csrfField()}}
-      <input type="hidden" id="url" name="url" value="{{id}}">
-      <textarea id="code" name="code" placeholder="Votre code........."></textarea>
-      <button type="submit">ENVOYER</button>
-    </form>
-    <div id="group">
-      <div id="languageDetected"></div>
-      <button id="nightModeToggle">Mode Nuit</button>
-      <button id="copyUrlButton">Copie URL</button>
-    </div>
-    <div id="urlList">
-      <!-- Les URLs seront ajoutées ici dynamiquement -->
-    </div>
+  <div id="img" class="animate__animated animate__fadeInDown">
+    <img src="{{ asset('image/LOGO.png') }}" alt="Logo">
+  </div>
+  <form method="post" action="{{route("code.store")}}">
+    {{csrfField()}}
+    <input type="hidden" id="url" name="url" value="{{id}}">
+    <textarea id="code" name="code" placeholder="Votre code........."></textarea>
+    <button type="submit">ENVOYER</button>
+  </form>
+  <div id="group" class="animate__animated animate__fadeIn animate__delay-1s">
+    <div id="languageDetected"></div>
+    <button id="nightModeToggle">Mode Nuit</button>
+    <button id="copyUrlButton">Copie URL</button>
+  </div>
+
+  <div id="urlList" class="animate__animated animate__fadeIn animate__delay-1s">
+    <h2>URLs sauvegardées :</h2>
+    <!-- Les URLs seront ajoutées ici dynamiquement -->
+  </div>
 
 </body>
+
+</html>
 
 </html>
