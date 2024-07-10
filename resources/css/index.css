@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+body {
+  font-family: "Open Sans", sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #efe6d8;
+}
+
+textarea {
+  background-color: rgb(233, 220, 202);
+  width: 100%;
+  height: 400px;
+  margin-bottom: 10px;
+  font-family: monospace;
+  font-size: 14px;
+  padding: 10px;
+  border: 1px solid #c81818;
+  border-radius: 4px;
+}
+
+#img {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#img img {
+  max-width: 100%;
+  height: auto;
+  margin: 20px;
+}
+
+/* Centrer les boutons */
+#group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+/* Button Styles */
+button {
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: #4d0b0b;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+button:hover {
+  background-color: #a61414;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+#nightModeToggle {
+  background-color: #333;
+}
+
+#nightModeToggle:hover {
+  background-color: #555;
+}
+
+#copyUrlButton {
+  background-color: #4a90e2;
+}
+
+#copyUrlButton:hover {
+  background-color: #3a7bc8;
+}
+
+
+
+/* Night mode styles */
+body.night-mode {
+  background-color: #2c2c2c;
+  color: #ffffff;
+}
+
+body.night-mode #code {
+  background-color: #1c1c1c;
+  color: #ffffff;
+  border-color: #444;
+}
+
+body.night-mode textarea {
+  background-color: #1c1c1c;
+  color: #ffffff;
+  border-color: #444;
+}
+
+
+body.night-mode #nightModeToggle {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+body.night-mode #copyUrlButton {
+  background-color: #2a5a8e;
+}
+
+body.night-mode h1 {
+  color: #ffffff;
+}
+
+body.night-mode h2 {
+  color: #ffffff;
+}
+
+/* Styles pour la section URL Sauvegardé */
+#urlList {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #c81818;
+  border-radius: 4px;
+}
+
+
+
+#urlList a {
+  display: block;
+  margin-bottom: 5px;
+  color: #c81818;
+  text-decoration: none;
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+}
+
+#urlList a:hover {
+  text-decoration: underline;
+  background-color: #f8f8f8;
+}
+
+/* Ajustements pour le mode nuit */
+body.night-mode #urlList {
+  background-color: #1c1c1c;
+  border-color: #444;
+}
+
+body.night-mode #urlList h2 {
+  color: #ffffff;
+}
+
+body.night-mode #urlList a {
+  color: #4a90e2;
+  border-bottom-color: #444;
+}
+
+body.night-mode #urlList a:hover {
+  background-color: #2c2c2c;
+}
