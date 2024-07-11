@@ -22,13 +22,14 @@ document.addEventListener('DOMContentLoaded', () => {
   let timeout = null;
   const form = document.getElementById('codeForm');
 
+  //La fonction debounceSave est écrite pour réduire le nombre de requête au serveur
   function debounceSave() {
-    clearTimeout(timeout);
+    clearTimeout(timeout); // Annule le timeout précédent pour éviter plusieurs soumissions simultanées
     timeout = setTimeout(() => {
-      form.submit();
-    }, 500);
+      form.submit(); // Le formulaire est soumis automatiquement après le délai via form.submit()
+    }, 500); // Attend 500 millisecondes avant de soumettre le formulaire
   }
-
+  
   codeTextarea.addEventListener('input', () => {
     debounceSave(); // Enregistrement automatique après chaque modification avec un délai
     updateLanguageDetection(); // Mise à jour de la détection de langage après chaque modification
