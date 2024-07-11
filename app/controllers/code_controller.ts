@@ -9,3 +9,4 @@ export default class CodeController {
     return response.redirect('back')
   }
 }
+

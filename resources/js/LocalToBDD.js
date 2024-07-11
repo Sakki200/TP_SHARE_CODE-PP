@@ -1,60 +1,61 @@
 document.addEventListener('DOMContentLoaded', () => {
-  //Récupération de l'URL
   function getCurrentURL() {
-    return window.location.href
+    return window.location.href;
   }
-  const urlID = getCurrentURL().slice(-3)
-  const savedCode = localStorage.getItem(urlID)
+ 
 
-  let codeUser = ''
-  const codeTextarea = document.getElementById('code')
-  const urlList = document.getElementById('urlList')
+  const codeTextarea = document.getElementById('code');
+  const urlList = document.getElementById('urlList');
+  const languageDetected = document.getElementById('languageDetected');
 
-  //Fonction recup de l'URL
-  // function restoreTextareaContent() {
-  //   if (savedCode) {
-  //     codeTextarea.value = savedCode
-  //   }
-  // }
-  // restoreTextareaContent()
+  function detectLanguage(code) {
+    const result = hljs.highlightAuto(code);
+    return result.language || 'unknown';
+  }
+
+  function updateLanguageDetection() {
+    const code = codeTextarea.value;
+    const detectedLanguage = detectLanguage(code);
+    languageDetected.textContent = `Langage détecté: ${detectedLanguage}`;
+  }
+
+  let timeout = null;
+  const form = document.getElementById('codeForm');
+
+  function debounceSave() {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      form.submit();
+    }, 500);
+  }
 
   codeTextarea.addEventListener('input', () => {
-    codeUser = codeTextarea.value
-    localStorage.setItem(urlID, codeUser)
-    updateUrlList() // Mise à jour de la liste des URLs après chaque modification
-  })
+    debounceSave(); // Enregistrement automatique après chaque modification avec un délai
+    updateLanguageDetection(); // Mise à jour de la détection de langage après chaque modification
+  });
 
   // Nouvelle fonction pour afficher les URLs
   function updateUrlList() {
-    urlList.innerHTML = '<h2>URLs sauvegardées :</h2>'
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i)
-      if (key.length === 3) {
-        // Vérifie si la clé a 3 caractères
-        const url = `${window.location.origin}/${key}`
-        const link = document.createElement('a')
-        link.href = url
-        link.textContent = url
-        urlList.appendChild(link)
-      }
-    }
+    urlList.innerHTML = '<h2>URLs sauvegardées :</h2>';
+    // Ici, vous pouvez ajouter la logique pour afficher les URLs sauvegardées depuis la base de données, si nécessaire.
   }
 
   // Initialisation de la liste des URLs
-  updateUrlList()
+  updateUrlList();
+  updateLanguageDetection();
 
   // Ajout de la fonctionnalité de copie d'URL
-  const copyUrlButton = document.getElementById('copyUrlButton')
+  const copyUrlButton = document.getElementById('copyUrlButton');
   copyUrlButton.addEventListener('click', () => {
-    const url = getCurrentURL()
+    const url = getCurrentURL();
     navigator.clipboard.writeText(url).then(() => {
-      alert('URL copiée !!')
-    })
-  })
+      alert('URL copiée !!');
+    });
+  });
 
   // Ajout de la fonctionnalité de mode nuit si nécessaire
-  const nightModeToggle = document.getElementById('nightModeToggle')
+  const nightModeToggle = document.getElementById('nightModeToggle');
   nightModeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('night-mode')
-  })
-})
+    document.body.classList.toggle('night-mode');
+  });
+});
