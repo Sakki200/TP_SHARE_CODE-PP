@@ -17,11 +17,11 @@
   <div id="img" class="animate__animated animate__fadeInDown">
     <img src="{{ asset('image/LOGO.png') }}" alt="Logo">
   </div>
-  <form method="post" action="{{route("code.store")}}">
+  <form id="codeForm"  method="post" action="{{route("code.store")}}">
     {{csrfField()}}
     <input type="hidden" id="url" name="url" value="{{id}}">
-    <textarea id="code" name="code" placeholder="Votre code.........">{{code}}</textarea>
-    <button type="submit">ENVOYER</button>
+    <textarea  id="code" name="code" placeholder="Votre code.........">{{code}}</textarea>
+    
   </form>
   <div id="group" class="animate__animated animate__fadeIn animate__delay-1s">
     <div id="languageDetected"></div>
