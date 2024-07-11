@@ -1,61 +1,61 @@
 document.addEventListener('DOMContentLoaded', () => {
   function getCurrentURL() {
-    return window.location.href;
+    return window.location.href
   }
- 
 
-  const codeTextarea = document.getElementById('code');
-  const urlList = document.getElementById('urlList');
-  const languageDetected = document.getElementById('languageDetected');
+  const codeTextarea = document.getElementById('code')
+  const urlList = document.getElementById('urlList')
+  const languageDetected = document.getElementById('languageDetected')
 
   function detectLanguage(code) {
-    const result = hljs.highlightAuto(code);
-    return result.language || 'unknown';
+    const result = hljs.highlightAuto(code)
+    return result.language || 'unknown'
   }
 
   function updateLanguageDetection() {
-    const code = codeTextarea.value;
-    const detectedLanguage = detectLanguage(code);
-    languageDetected.textContent = `Langage détecté: ${detectedLanguage}`;
+    const code = codeTextarea.value
+    const detectedLanguage = detectLanguage(code)
+    languageDetected.textContent = `Langage détecté: ${detectedLanguage}`
   }
 
-  let timeout = null;
-  const form = document.getElementById('codeForm');
+  let timeout = null
+  const form = document.getElementById('codeForm')
 
+  //La fonction debounceSave est écrite pour réduire le nombre de requête au serveur
   function debounceSave() {
-    clearTimeout(timeout);
+    clearTimeout(timeout) // Annule le timeout précédent pour éviter plusieurs soumissions simultanées
     timeout = setTimeout(() => {
-      form.submit();
-    }, 500);
+      form.submit() // Le formulaire est soumis automatiquement après le délai via form.submit()
+    }, 500) // Attend 500 millisecondes avant de soumettre le formulaire
   }
 
   codeTextarea.addEventListener('input', () => {
-    debounceSave(); // Enregistrement automatique après chaque modification avec un délai
-    updateLanguageDetection(); // Mise à jour de la détection de langage après chaque modification
-  });
+    debounceSave() // Enregistrement automatique après chaque modification avec un délai
+    updateLanguageDetection() // Mise à jour de la détection de langage après chaque modification
+  })
 
   // Nouvelle fonction pour afficher les URLs
   function updateUrlList() {
-    urlList.innerHTML = '<h2>URLs sauvegardées :</h2>';
+    urlList.innerHTML = '<h2>URLs sauvegardées :</h2>'
     // Ici, vous pouvez ajouter la logique pour afficher les URLs sauvegardées depuis la base de données, si nécessaire.
   }
 
   // Initialisation de la liste des URLs
-  updateUrlList();
-  updateLanguageDetection();
+  updateUrlList()
+  updateLanguageDetection()
 
   // Ajout de la fonctionnalité de copie d'URL
-  const copyUrlButton = document.getElementById('copyUrlButton');
+  const copyUrlButton = document.getElementById('copyUrlButton')
   copyUrlButton.addEventListener('click', () => {
-    const url = getCurrentURL();
+    const url = getCurrentURL()
     navigator.clipboard.writeText(url).then(() => {
-      alert('URL copiée !!');
-    });
-  });
+      alert('URL copiée !!')
+    })
+  })
 
   // Ajout de la fonctionnalité de mode nuit si nécessaire
-  const nightModeToggle = document.getElementById('nightModeToggle');
+  const nightModeToggle = document.getElementById('nightModeToggle')
   nightModeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('night-mode');
-  });
-});
+    document.body.classList.toggle('night-mode')
+  })
+})
