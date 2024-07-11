@@ -3,8 +3,8 @@ services:
     name: adonis-app
     env: node
     plan: free
-    buildCommand: npm install && npm run build && npm run migrate
-    startCommand: npm run start
+    buildCommand: pnpm install && pnpm run build && pnpm run migrate
+    startCommand: pnpm run start
     envVars:
       - key: NODE_ENV
         value: production
