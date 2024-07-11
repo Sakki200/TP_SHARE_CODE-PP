@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: adonis-app
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build && npm run migrate
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DB_CONNECTION
+        value: sqlite
+      - key: DB_FILENAME
+        value: /var/data/database.sqlite
+    mounts:
+      - path: /var/data
+        volume: sqlite-data
+
+volumes:
+  - name: sqlite-data
+    sizeGB: 1
