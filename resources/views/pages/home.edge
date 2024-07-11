@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
 
-  @vite(['resources/css/index.css', 'resources/js/LocalToBDD.js'])
+  @vite(['resources/css/index.css', 'resources/js/LocalToBDD.js', 'resources/js/app.js'])
 
 </head>
 
@@ -20,7 +20,7 @@
   <form method="post" action="{{route("code.store")}}">
     {{csrfField()}}
     <input type="hidden" id="url" name="url" value="{{id}}">
-    <textarea id="code" name="code" placeholder="Votre code........."></textarea>
+    <textarea id="code" name="code" placeholder="Votre code.........">{{code}}</textarea>
     <button type="submit">ENVOYER</button>
   </form>
   <div id="group" class="animate__animated animate__fadeIn animate__delay-1s">

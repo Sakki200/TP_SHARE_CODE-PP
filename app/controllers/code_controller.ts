@@ -5,7 +5,7 @@ import type { HttpContext } from '@adonisjs/core/http'
 export default class CodeController {
   async store({ request, response }: HttpContext) {
     const data = request.only(['id', 'url', 'code'])
-    const user = await Code.create(data)
+    await Code.create(data)
     return response.redirect('/')
   }
 }

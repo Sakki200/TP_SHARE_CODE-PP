@@ -11,12 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const urlList = document.getElementById('urlList')
 
   //Fonction recup de l'URL
-  function restoreTextareaContent() {
-    if (savedCode) {
-      codeTextarea.value = savedCode
-    }
-  }
-  restoreTextareaContent()
+  // function restoreTextareaContent() {
+  //   if (savedCode) {
+  //     codeTextarea.value = savedCode
+  //   }
+  // }
+  // restoreTextareaContent()
 
   codeTextarea.addEventListener('input', () => {
     codeUser = codeTextarea.value

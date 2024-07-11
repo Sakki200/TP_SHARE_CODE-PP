@@ -8,7 +8,7 @@ body {
   background-color: #efe6d8;
 }
 
-textarea {
+#code {
   background-color: rgb(233, 220, 202);
   width: 100%;
   height: 400px;
@@ -113,9 +113,11 @@ body.night-mode h2 {
 }
 
 #urlList {
+  text-align: center;
+  color: #e63e3e;
   margin-top: 20px;
   padding: 10px;
-  background-color: #f0f0f0;
+  background-color: rgb(222, 206, 185);
   border: 1px solid #c81818;
   border-radius: 4px;
 }
@@ -123,7 +125,7 @@ body.night-mode h2 {
 #urlList a {
   display: block;
   margin-bottom: 5px;
-  color: #c81818;
+  color: #ffffff;
   text-decoration: none;
 }
 

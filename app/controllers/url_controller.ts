@@ -1,3 +1,4 @@
+import Code from '#models/code'
 export default class URLController {
   async RedirectURL({ response }: any) {
     //Pour l'url random
@@ -10,14 +11,22 @@ export default class URLController {
       id += patern.charAt(Math.floor(Math.random() * paternLength))
       counter += 1
     }
-
     return response.redirect(`/${id}`)
   }
 
   async ShowURL({ params, view }: any) {
-    const id = params.id
+    const url = params.id
+    const codes = await Code.all()
+    let codeValue
+
+    codes.forEach((code) => {
+      if (code.url === url) {
+        codeValue = code.code
+      } 
+    })
     return view.render('pages/home', {
-      id: id,
+      id: url,
+      code: codeValue,
     })
   }
 }
