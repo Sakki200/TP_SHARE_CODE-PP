@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
 
-  @vite(['resources/css/index.css', 'resources/js/LocalToBDD.js', 'resources/js/app.js'])
+  @vite(['resources/css/app.css', 'resources/js/LocalToBDD.js', 'resources/js/app.js'])
 
 </head>
 
@@ -17,11 +17,11 @@
   <div id="img" class="animate__animated animate__fadeInDown">
     <img src="{{ asset('image/LOGO.png') }}" alt="Logo">
   </div>
-  <form id="codeForm"  method="post" action="{{route("code.store")}}">
+  <form id="codeForm" method="post" action="{{route(" code.store")}}">
     {{csrfField()}}
     <input type="hidden" id="url" name="url" value="{{id}}">
-    <textarea  id="code" name="code" placeholder="Votre code.........">{{code}}</textarea>
-    
+    <textarea id="code" name="code" placeholder="Votre code.........">{{code}}</textarea>
+
   </form>
   <div id="group" class="animate__animated animate__fadeIn animate__delay-1s">
     <div id="languageDetected"></div>
