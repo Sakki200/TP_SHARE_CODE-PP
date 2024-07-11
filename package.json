@@ -61,6 +61,7 @@
     "@adonisjs/vite": "^3.0.0",
     "@vinejs/vine": "^2.1.0",
     "adonis-react": "^0.2.1",
+    "adonis-scheduler": "^3.0.2",
     "better-sqlite3": "^11.1.2",
     "edge.js": "^6.0.2",
     "json-server": "1.0.0-beta.1",

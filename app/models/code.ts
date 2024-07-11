@@ -1,5 +1,6 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@adonisjs/lucid/orm'
+import { BaseModel, beforeFetch, beforeFind, column } from '@adonisjs/lucid/orm'
+import CleanOldCode from './hook/clean_old_code.js'
 
 export default class Code extends BaseModel {
   @column({ isPrimary: true })
@@ -16,4 +17,10 @@ export default class Code extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
+
+  @beforeFetch()
+  @beforeFind()
+  public static async cleanOld() {
+    await CleanOldCode.cleanOld()
+  }
 }
